@@ -1,0 +1,13 @@
+<h2 mat-dialog-title>Add Task Group</h2>
+<form [formGroup]="taskGroupForm" (ngSubmit)="onSubmit()">
+    <div mat-dialog-content>
+        <mat-form-field style="width: 100%;">
+            <mat-label for="name">Name: </mat-label>
+            <input matInput type="text" formControlName="name" required/>
+        </mat-form-field>
+        <div mat-dialog-actions>
+            <button type="submit" [disabled]="taskGroupForm.invalid" mat-button>Save</button>
+            <button mat-button (click)="onNoClick($event)">Cancel</button>
+        </div>
+    </div>
+</form>

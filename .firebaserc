@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "pwa-task-management-app": {
+      "hosting": {
+        "TaskManagerApp": [
+          "pwa-task-management-app"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "pwa-task-management-app"
+  }
+}

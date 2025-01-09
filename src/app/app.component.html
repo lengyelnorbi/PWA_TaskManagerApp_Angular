@@ -1,0 +1,24 @@
+<mat-sidenav-container>
+  <mat-sidenav #sidenav position="end">
+    <app-menu (selectedPage)="changePage($event)" [currentPage]="page" (onCloseSidenav)="onClose($event, sidenav)"(onLogout)="logout($event)" [loggedInUser]="loggedInUser" *ngIf="page"></app-menu>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <div style="margin-left: 2vw">TASK MANAGEMENT</div>
+        <div class="navigation-items">
+          <ul class="navigation-items">
+            <li *ngIf="!(loggedInUser)"><a routerLink="/login">Login</a></li>
+            <li *ngIf="loggedInUser"><a routerLink="/login" (click)="logout()">Logout</a></li>
+            <li *ngIf="loggedInUser"><a routerLink="/task-list">Tasks</a></li>
+            <li *ngIf="!(loggedInUser)" style="margin-right: 40px"><a routerLink="/signup">Register</a></li>
+          </ul>
+        </div>
+        <div class="menu-button-container">
+          <button class="menu-button" mat-icon-button (click)="onToggleSidenav(sidenav)">
+            <mat-icon>menu</mat-icon>
+          </button>
+        </div>
+    </mat-toolbar>
+    <router-outlet style="flex: 1;"></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

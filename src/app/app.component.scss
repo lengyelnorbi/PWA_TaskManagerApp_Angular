@@ -1,0 +1,47 @@
+html{
+    width: 100vw !important;
+    height: 100vh !important;
+}
+a {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover, a:active {
+    color: lightgray;
+}
+
+.navigation-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 30px;
+    margin-left: auto;
+}
+
+mat-sidenav {
+    width: 250px;
+}
+
+mat-toolbar {
+    display: flex;
+    height: 64px;
+    justify-content: space-between;
+}
+
+.menu-button-container{
+    display: flex;
+    justify-content: flex-end;
+}
+
+@media only screen and (min-width: 599px) {
+    .menu-button {
+      display: none; /* Hide the button on screens greater than or equal to 600 pixels */
+    }
+}
+@media only screen and (max-width: 599px) {
+    .navigation-items {
+      display: none; /* Hide the button on screens greater than or equal to 600 pixels */
+    }
+}

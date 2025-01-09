@@ -1,0 +1,30 @@
+<mat-nav-list>
+    <!-- <a mat-list-item routerLink="/real-estates" (click)="close()">
+        <mat-icon>home</mat-icon>
+        <span>Real Estates</span>
+    </a>
+    <a mat-list-item routerLink="/advertise" (click)="close()">  *ngIf="loggedInUser" 
+        <mat-icon>fiber_new</mat-icon>
+        <span>Advertise</span>
+    </a>
+    <a mat-list-item routerLink="/myadvertisements" (click)="close()"> *ngIf="loggedInUser" 
+        <mat-icon>fiber_new</mat-icon>
+        <span>My Advertisements</span>
+    </a> -->
+    <a *ngIf="!loggedInUser" mat-list-item routerLink="/login" (click)="close()">
+        <mat-icon>login</mat-icon>
+        <span>Login</span>
+    </a>
+    <a *ngIf="loggedInUser" mat-list-item routerLink="/login" (click)="close(true)">
+        <mat-icon>logout</mat-icon>
+        <span>Logout</span>
+    </a>
+    <a *ngIf="!loggedInUser" mat-list-item routerLink="/signup" (click)="close()">
+        <mat-icon>app_registration</mat-icon>
+        <span>Register</span>
+    </a>
+    <a *ngIf="loggedInUser" mat-list-item routerLink="/task-list">
+        <mat-icon>Task</mat-icon>
+        <span>Task</span>
+    </a>
+</mat-nav-list>

@@ -1,0 +1,71 @@
+<div class="flex-container">
+    <mat-card class="outer-card">
+      <div class="mat-title-flex">
+        <mat-panel-title><strong class="task-group-list-title">Task Groups</strong></mat-panel-title>
+        <div>
+          <button mat-button (click)="openAddTaskGroupModal(null)">New</button>
+        </div>
+      </div>
+      <div class="task-container">
+        <mat-accordion class="accordion-container task-list">
+          <mat-expansion-panel *ngFor="let taskGroup of taskGroups" class="task-group">
+            <mat-expansion-panel-header class="custom-expansion-header">
+              <div class="task-group-header">
+                <div>
+                  <mat-panel-title class="task-group-title">{{ taskGroup.name }}</mat-panel-title>
+                </div>
+                <div class="task-group-buttons">
+                  <button mat-button (click)="openAddTaskModal(taskGroup)">New</button>
+                  <button mat-button (click)="openEditTaskGroupModal(taskGroup)">Edit</button>
+                  <button mat-button (click)="deleteTaskGroup(taskGroup)">Delete</button>
+                </div>
+              </div>
+            </mat-expansion-panel-header>
+            <div *ngFor="let singleTask of getSingleTasksInGroup(taskGroup)" class="task">
+              <ng-container *ngTemplateOutlet="singleTaskTemplate; context: { task: singleTask }"></ng-container>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </mat-card>
+  
+    <mat-card class="outer-card">
+      <div class="mat-title-flex">
+        <mat-panel-title><strong class="task-group-title">Single Tasks</strong></mat-panel-title>
+        <div>
+          <button mat-button (click)="openAddTaskModal(null)">New</button>
+        </div>
+      </div>
+      <div class="task-container">
+        <div class="accordion-container">
+            <div *ngFor="let singleTask of singleTasks" class="task single-task">
+                <ng-container *ngTemplateOutlet="singleTaskTemplate; context: { task: singleTask }"></ng-container>
+            </div>
+        </div>
+      </div>
+    </mat-card>
+</div>
+  
+<ng-template #singleTaskTemplate let-task="task">
+  <mat-card class="single-task-card" [ngClass]="{ 'active': task.isDone, 'not-active': !task.isDone }">
+    <mat-card-content class="flex-row">
+      <div class="title-buttons-column">
+        <div>
+          <mat-card-title class="single-task-title">{{ task.title }}</mat-card-title>
+        </div>
+        <div>
+          <p>Date/Time: {{ task.date }}</p>
+        </div>
+      </div>
+      <div class="button-container">
+        <button mat-button class="done-button" [ngStyle]="{ 'background-color': task.isDone ? 'white' : 'lightgreen', 'color': task.isDone ? 'black' : 'white' }" (click)="toggleTaskStatus(task)">{{ task.isDone ? 'Undone' : 'Done' }}</button>
+        <button mat-button class="edit-button" (click)="openEditTaskModal(task)">Edit</button>
+        <button mat-button class="delete-button" (click)="deleteTask(task)">Delete</button>
+      </div>
+    </mat-card-content>
+
+
+  </mat-card>
+</ng-template>
+
+  

@@ -1,0 +1,21 @@
+<h2 mat-dialog-title>Edit Task</h2>
+<form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+    <div mat-dialog-content>
+        <mat-form-field style="width: 100%;">
+            <mat-label for="title">title: </mat-label>
+            <input matInput type="text" formControlName="title" required/>
+        </mat-form-field>
+        <mat-form-field style="width: 100%;">
+          <mat-label for="date">Date: </mat-label>
+          <input matInput type="text" formControlName="date" required/>
+      </mat-form-field>
+      <mat-form-field style="width: 100%;">
+        <mat-label for="priority">Priority: </mat-label>
+        <input matInput type="text" formControlName="priority" required/>
+    </mat-form-field>
+        <div mat-dialog-actions>
+            <button type="submit" [disabled]="taskForm.invalid" mat-button>Save</button>
+            <button mat-button (click)="onNoClick($event)">Cancel</button>
+        </div>
+    </div>
+</form>
